@@ -1,0 +1,24 @@
+<div class="panel panel-default">
+  <div class="panel-body">
+    <form name="dataForm">
+      <div class="form-group"
+          ng-repeat="type in newData">
+        <span class="glyphicon glyphicon-asterisk text-danger"
+              ng-if="type.required">
+        </span>
+        <label for="">
+          {{type.name}}
+        </label>
+        <input type="text"
+              ng-model="type.value"
+              class="form-control"
+              ng-required="type.required">
+      </div>
+      <button class="btn btn-primary"
+              ng-disabled="dataForm.$invalid"
+              ng-click="saveChanges(newData)">
+        <strong>Create</strong>
+      </button>
+    </form>
+  </div>
+</div>

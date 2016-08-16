@@ -1,0 +1,49 @@
+<div class="table-responsive">
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>
+          <button class="btn btn-sm btn-success"
+                  ng-class="{'btn-warning': addFormVisible}"
+                  ng-click="toggleForm()">
+            <span ng-if="!addFormVisible">Add</span>
+            <span ng-if="addFormVisible">Cancel</span>
+          </button>
+        </th>
+        <th ng-repeat="dataSet in component.dataSets track by $index"
+            class="text-center">
+          <span class="text-primary glyphicon glyphicon-exclamation-sign"
+                ng-if="dataSet.required">
+          </span>
+          {{dataSet.name}} / {{dataSet.type}}
+        </th>
+        <th class="text-center">
+          Edit
+        </th>
+        <th class="text-center">
+          Remove
+        </th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr row
+          ng-repeat="row in component.data track by $index"
+          row-data="row"
+          ng-if="component.data.length"
+          index="$index">
+      </tr>
+    </tbody>
+  </table>
+  <div class="alert alert-danger text-center"
+        ng-if="!component.data.length">
+    <strong>
+      No data records in this component
+    </strong>
+  </div>
+  <add-data data="component.dataSets"
+            ng-if="addFormVisible">
+  </add-data>
+  <edit-form data="rowToEdit">
+  </edit-form>
+</div>
+<hr>

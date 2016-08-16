@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Test app</title>
+  <link rel="stylesheet" href="build/styles/vendor.css">
+  <link rel="stylesheet" href="build/styles/main.css">
+</head>
+<body ng-app="app" ng-controller="Main">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-12">
+        <br>
+        <button class="btn btn-sm btn-primary pull-right"
+                ng-class="{'btn-warning': createFormVisible}"
+                ng-click="toggleCreateForm()">
+          <span ng-if="!createFormVisible">
+            Show Form
+          </span>
+          <span ng-if="createFormVisible">
+            Hide Form
+          </span>
+        </button>
+      </div>
+    </div>
+    <create-form ng-if="createFormVisible"></create-form>
+    <components components="components"></components>
+  </div>
+  <script src="build/build.min.js"></script>
+</body>
+</html>

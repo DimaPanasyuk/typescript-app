@@ -1,0 +1,90 @@
+<div class="row">
+  <div class="col-sm-4">
+    <form name="createForm">
+      <div class="form-group">
+        <label for="name">Name:
+          <div class="btn-group">
+            <div class="btn-group"
+                ng-repeat="name in availableNames">
+              <button class="btn btn-xs btn-default"
+                      ng-class="{'btn-primary': newDataSet.name === name}"
+                      ng-click="setSelectedName(name)">
+                {{name}}
+              </button>
+            </div>
+          </div>
+        </label>
+      </div>
+      <div class="form-group">
+        <label for="type">Type: </label>
+        <div class="btn-group">
+          <div class="btn-group"
+               ng-repeat="type in availableTypes">
+            <button class="btn btn-xs btn-default"
+                    ng-class="{'btn-danger': newDataSet.type === type}"
+                    ng-click="setSelectedType(type)">
+              {{type}}
+            </button>
+          </div>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="required">Required: </label>
+        <div class="btn-group">
+          <div class="btn-group">
+            <button class="btn btn-sm btn-default"
+                    ng-click="setRequired(true)"
+                    ng-class="{'btn-warning': newDataSet.required}">
+              Yes
+            </button>
+          </div>
+          <div class="btn-group">
+            <button class="btn btn-sm btn-default"
+                    ng-click="setRequired(false)"
+                    ng-class="{'btn-warning': !newDataSet.required}">
+              No
+            </button>
+          </div>
+        </div>
+      </div>
+      <button class="btn btn-sm btn-block btn-success"
+              ng-click="addDataSet(newDataSet)">
+        Add data set
+      </button>
+    </form>
+    <button class="btn btn-block btn-sm btn-primary create-component__button"
+            ng-click="createComponent()"
+            ng-disabled="dataSets.length === 0 ||
+                         dataSets.length >= 13">
+      Create component
+    </button>
+  </div>
+  <div class="col-sm-8">
+    <div class="row">
+      <div class="col-sm-3"
+           ng-repeat="dataSet in dataSets track by $index">
+        <div class="panel panel-default"
+             ng-click="removeDataSet($index)"
+             ng-class="{'panel-primary': dataSet.required,
+                        'panel-default': !dataSet.required}">
+          <div class="panel-heading text-center">
+          </div>
+          <div class="panel-body">
+            <p class="text-primary">
+              <strong>
+                Name:
+              </strong>
+              {{dataSet.name}}
+            </p>
+            <p class="text-danger">
+              <strong>
+                Type:
+              </strong>
+              {{dataSet.type}}
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

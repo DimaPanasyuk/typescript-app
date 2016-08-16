@@ -1,0 +1,20 @@
+<td></td>
+<td cell
+    ng-repeat="(key, value) in rowData track by $index"
+    class="text-center"
+    cell-key="key"
+    cell-value="value">
+</td>
+<td class="text-center">
+  <button class="btn btn-sm btn-primary"
+          ng-click="editRow(index)">
+    Edit
+  </button>
+</td>
+<td class="text-center">
+  <button class="btn btn-sm btn-danger"
+          ng-click="removeRow()">
+    <span class=""></span>
+    Remove
+  </button>
+</td>
